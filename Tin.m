@@ -374,12 +374,9 @@
         if (self.debugOutput) NSLog(@"\t Request succesfull");
         
         NSError *_error = nil;
-        id _parsedResponse = AFJSONDecode(responseObject, &_error);
-        if (_parsedResponse == nil)
-        {
-            _parsedResponse = responseObject;
-        }
-        TinResponse *_response = [TinResponse responseWithClient:_client URL:operation.request.URL parsedResponse:_parsedResponse error:_error];
+        
+        
+        TinResponse *_response = [TinResponse responseWithClient:_client URL:operation.request.URL response:responseObject error:_error];
         if (returnSuccess) {
             dispatch_async(dispatch_get_main_queue(), ^{ 
                 returnSuccess(_response);
@@ -388,7 +385,7 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (self.debugOutput) NSLog(@"\t Request failed, error: %@", error);
         
-        TinResponse *_response = [TinResponse responseWithClient:_client URL:operation.request.URL parsedResponse:nil error:error];
+        TinResponse *_response = [TinResponse responseWithClient:_client URL:operation.request.URL response:nil error:error];
         if (returnSuccess) {
             dispatch_async(dispatch_get_main_queue(), ^{ 
                 returnSuccess(_response);
@@ -411,7 +408,7 @@
             [client setDefaultHeader:key value:obj];
         }];
     }
-    
+        
     client.parameterEncoding = AFJSONParameterEncoding;
 }
 

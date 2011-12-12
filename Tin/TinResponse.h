@@ -12,7 +12,8 @@
 @property (nonatomic, retain) AFHTTPClient *client;
 @property (nonatomic, retain) NSURL *URL;
 @property (nonatomic, retain) id parsedResponse;
-@property (nonatomic, retain) NSError *error;
+@property (nonatomic, retain) NSError * error;
+@property (nonatomic, retain) id response;
 
-+ (id)responseWithClient:(AFHTTPClient *)_client URL:(NSURL *)_URL parsedResponse:(id)_parsedResponse error:(NSError *)_error;
++ (id)responseWithClient:(AFHTTPClient *)_client URL:(NSURL *)_URL response:(id)_response error:(NSError *)_error;
 @end
