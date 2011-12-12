@@ -375,7 +375,10 @@
         
         NSError *_error = nil;
         id _parsedResponse = AFJSONDecode(responseObject, &_error);
-        
+        if (_parsedResponse == nil)
+        {
+            _parsedResponse = responseObject;
+        }
         TinResponse *_response = [TinResponse responseWithClient:_client URL:operation.request.URL parsedResponse:_parsedResponse error:_error];
         if (returnSuccess) {
             dispatch_async(dispatch_get_main_queue(), ^{ 
