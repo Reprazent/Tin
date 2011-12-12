@@ -13,7 +13,7 @@
 @property (nonatomic, retain) NSURL *URL;
 @property (nonatomic, retain) id parsedResponse;
 @property (nonatomic, retain) NSError * error;
-@property (nonatomic, retain) id response;
+@property (nonatomic, retain) id body;
 
-+ (id)responseWithClient:(AFHTTPClient *)_client URL:(NSURL *)_URL response:(id)_response error:(NSError *)_error;
++ (id)responseWithClient:(AFHTTPClient *)_client URL:(NSURL *)_URL body:(id)_body error:(NSError *)_error;
 @end
